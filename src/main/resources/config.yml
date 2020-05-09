@@ -1,0 +1,200 @@
+#=======================================================================#
+#                                                                       #
+#  ██████╗  █████╗ ██████╗ ██╗    ██╗ ██████╗ ██████╗ ██████╗ ███████╗  #
+#  ██╔══██╗██╔══██╗██╔══██╗██║    ██║██╔═══██╗██╔══██╗██╔══██╗██╔════╝  #
+#  ██████╔╝███████║██║  ██║██║ █╗ ██║██║   ██║██████╔╝██║  ██║███████╗  #
+#  ██╔══██╗██╔══██║██║  ██║██║███╗██║██║   ██║██╔══██╗██║  ██║╚════██║  #
+#  ██████╔╝██║  ██║██████╔╝╚███╔███╔╝╚██████╔╝██║  ██║██████╔╝███████║  #
+#  ╚═════╝ ╚═╝  ╚═╝╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝  #
+#                                                                       #
+#                              by 4PE18                                 #
+#=======================================================================#
+
+#Permission pour être notifié lors de la détection d'une insulte
+notif_perm: "badwords.notif"
+
+#Couleur du message signalé dans la notification
+notif_message_colorcode:  "&e"
+
+#Couleur de l'insulte detectée dans la notification
+notif_highlight_colorcode: "&6"
+
+#Message de notification
+# %player% = nom du joueur
+# %message% = message formatté
+# %certitude% = pourentage de certitude de la détection
+notif_message: "&c[Filter] &a%player% &7> %message% &7(&e%certitude%&7)"
+
+#Activer le coutournement de la détection
+bypass_enabled: false
+
+#Permission pour contourner la détection
+bypass_perm: "badwords.bypass"
+
+#Prendre en compte les versions avec "espace" des insultes lors de la génération
+#Par exemple, pour "idiot", le système prend en comptes les verions:
+#[idiot, idio t, idi ot, idi o t, id iot, id io t, id i ot, id i o t, i diot, i dio t, i di ot, i di o t, i d iot, i d io t, i d i ot, i d i o t]
+#(Sachant que les points, virgules, apostrophes, ect... sont aussi comptées lors de la détection (id.i o t = id i o t = idiot)
+generate_spaced_enabled: true
+
+#Si le système considère une insulte comme certaine à partir d'une certaine longueur
+pure_certitude_enabled: true
+
+#La longueur minimum à laquelle le système considère une insulte comme certaine
+#Par exemple à 4, "pute" sera considéré comme certain mais pas "con", ce qui évite une détection pour "config" par exemple
+pure_certitude_length: 4
+
+#Si le système va chercher à calculer la ressemblance d'un message avec les insultes
+#Par exemple "c0nard" n'est pas "connard" mais sa ressemblance est de 66%.
+#Le système détecte donc et reporte à partir d'un certain niveau (voir resemblance_minimum)
+resemblance_enabled: true
+
+#Pourcentage de ressemblance minimum pour déclencher un signalement
+#Par exemple, 60% permet la détection de "conne" avec "con" mais pas avec "connard" (ce qui génèrem de toute manière un
+resemblance_min: 60
+
+#Active l'éxécution concurrente du traitement des messages
+#Si désactivé, le traitement des messages se fera en différé (message par message)
+#FORTEMENT RECOMMANDE
+concurrent_enabled: true
+
+#Active l'utilisation d'une file d'attente pour le traitement des messages
+#Ces derniers sont placés dans une file d'attente et sont traités par les threads concurrents (voir resemblance_minimum)
+concurrent_queue_enabled: true
+
+#La capacité maximale de la file d'attente. Passé cette taille les nouveaux messages seront ignorés
+concurrent_queue_capacity: 500
+
+#Nombre maximal de threads concurrents/en éxécution simultanée pour le traitement des messages
+concurrent_max_threads: 5
+
+#Activer le webhook discord. Si activé, les notifications pourront aussi être envoyées sur discord.
+discord_webhook_enabled: false
+
+#N'activer le webhook que s'il n'y a pas de staff en ligne
+discord_webhook_no_staff: true
+
+#N'activer le webhook qu'à partir d'un certain pourcentage de certitude ressemblance minimum.
+discord_webhook_resemblance_enabled: false
+
+#La ressemblance minimum pour le webhook discord. Ne passe pas outre le paramètre resemblance_min.
+#Si défini à 100, seul les insultes "certaines" entraineront le webhook
+discord_webhook_resemblance_value: 70
+
+#L'url du webhook
+discord_webhook_url: "https://discordapp.com/api/webhooks/..."
+
+#Si la notification doit prendre la forme d'un embed discord pour webhook.
+discord_webhook_embed_enabled: true
+
+#Le titre de l'embed
+discord_webhook_embed_title: "BadWords"
+
+#La description de l'embed
+discord_webhook_embed_description: "Message suspicieux détecté!"
+
+#Le nom du champ "joueur" dans l'embed
+discord_webhook_embed_player: "Joueur"
+
+#Le nom du champ "message" dans l'embed
+discord_webhook_embed_message: "Message"
+
+#Le nom du champ "certitude" dans l'embed
+discord_webhook_embed_certitude: "Certitude"
+
+#Le nom du champ "date" dans l'embed
+#Contient la date à laquelle le système a reçu le message.
+#La date à laquelle il a fini de le traiter est définie dans le footer du l'embed.
+discord_webhook_embed_date: "Date"
+
+#Locale de la date. Nom de l'élément de l'énumération java.util.Locale
+discord_webhook_embed_locale: "FRANCE"
+
+#Zoneid de la date. Selon la documentation javadoc:
+#If the zone ID equals 'Z', the result is ZoneOffset.UTC.
+#If the zone ID consists of a single letter, the zone ID is invalid and DateTimeException is thrown.
+#If the zone ID starts with '+' or '-', the ID is parsed as a ZoneOffset using ZoneOffset.of(String).
+#If the zone ID equals 'GMT', 'UTC' or 'UT' then the result is a ZoneId with the same ID and rules equivalent to ZoneOffset.UTC.
+#If the zone ID starts with 'UTC+', 'UTC-', 'GMT+', 'GMT-', 'UT+' or 'UT-' then the ID is a prefixed offset-based ID.
+#The ID is split in two, with a two or three letter prefix and a suffix starting with the sign. The suffix is parsed as a ZoneOffset.
+#The result will be a ZoneId with the specified UTC/GMT/UT prefix and the normalized offset ID as per ZoneOffset.getId().
+#The rules of the returned ZoneId will be equivalent to the parsed ZoneOffset.
+#All other IDs are parsed as region-based zone IDs. Region IDs must match the regular expression [A-Za-z][A-Za-z0-9~/._+-]+ otherwise a DateTimeException is thrown.
+#If the zone ID is not in the configured set of IDs, ZoneRulesException is thrown. The detailed format of the region ID depends on the group supplying the data.
+#The default set of data is supplied by the IANA Time Zone Database (TZDB). This has region IDs of the form '{area}/{city}', such as 'Europe/Paris' or 'America/New_York'.
+#This is compatible with most IDs from TimeZone
+discord_webhook_embed_zoneid: "Europe/Paris"
+
+#Le format d'expression de la date. Selon la documentatio javadoc
+#Symbol  Meaning                     Presentation      Examples
+#    ------  -------                     ------------      -------
+#     G       era                         text              AD; Anno Domini; A
+#     u       year                        year              2004; 04
+#     y       year-of-era                 year              2004; 04
+#     D       day-of-year                 number            189
+#     M/L     month-of-year               number/text       7; 07; Jul; July; J
+#     d       day-of-month                number            10
+#
+#     Q/q     quarter-of-year             number/text       3; 03; Q3; 3rd quarter
+#     Y       week-based-year             year              1996; 96
+#     w       week-of-week-based-year     number            27
+#     W       week-of-month               number            4
+#     E       day-of-week                 text              Tue; Tuesday; T
+#     e/c     localized day-of-week       number/text       2; 02; Tue; Tuesday; T
+#     F       week-of-month               number            3
+#
+#     a       am-pm-of-day                text              PM
+#     h       clock-hour-of-am-pm (1-12)  number            12
+#     K       hour-of-am-pm (0-11)        number            0
+#     k       clock-hour-of-am-pm (1-24)  number            0
+#
+#     H       hour-of-day (0-23)          number            0
+#     m       minute-of-hour              number            30
+#     s       second-of-minute            number            55
+#     S       fraction-of-second          fraction          978
+#     A       milli-of-day                number            1234
+#     n       nano-of-second              number            987654321
+#     N       nano-of-day                 number            1234000000
+#
+#     V       time-zone ID                zone-id           America/Los_Angeles; Z; -08:30
+#     z       time-zone name              zone-name         Pacific Standard Time; PST
+#     O       localized zone-offset       offset-O          GMT+8; GMT+08:00; UTC-08:00;
+#     X       zone-offset 'Z' for zero    offset-X          Z; -08; -0830; -08:30; -083015; -08:30:15;
+#     x       zone-offset                 offset-x          +0000; -08; -0830; -08:30; -083015; -08:30:15;
+#     Z       zone-offset                 offset-Z          +0000; -0800; -08:00;
+#
+#     p       pad next                    pad modifier      1
+#
+#     '       escape for text             delimiter
+#     ''      single quote                literal           '
+#     [       optional section start
+#     ]       optional section end
+#     #       reserved for future use
+#     {       reserved for future use
+#     }       reserved for future use
+discord_webhook_embed_timeformat: "**HH**:**mm**:**ss** '`['dd MMM yyyy']`'"
+
+#Si les champs de l'embed doivent être mis en ligne
+discord_webhook_embed_inline: true
+
+#Dans le cas où l'embed est désactivé, le contenu du message du
+# %player% = nom du joueur
+# %message% = message formatté
+# %certitude% = pourentage de certitude de la détection
+discord_webhook_noembed_message: "**%player%** > %message% \n`%certitude% de certitude`"
+
+#Liste des mots insultants
+#Faire attention à ne pas mettre de mots avec espace, seulement la partie insultante
+#Par exemple, pour "fils de pute", seul "pute" suffit - afin d'éviter des détections en trop et d'améliorer la performance
+insults:
+  - "connard"
+  - "nique"
+  - "con"
+  - "pd"
+  - "salope"
+  - "batard"
+  - "suce"
+  - "suceur"
+  - "pute"
+  - "fdp"
+#  - "badblock" #lol.

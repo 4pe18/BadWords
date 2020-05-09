@@ -1,0 +1,4 @@
+name: BadWords
+main: fr.hyldaria.dev.badwords.BadWordsPlugin
+version: 1.0-RELEASE
+author: 4PE18
