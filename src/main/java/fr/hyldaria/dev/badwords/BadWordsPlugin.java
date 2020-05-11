@@ -204,6 +204,8 @@ public class BadWordsPlugin extends Plugin {
             this.getConfig().setDiscord_webhook_embed_inline(configuration.getBoolean("discord_webhook_embed_inline"));
             this.getConfig().setDiscord_webhook_noembed_message(configuration.getString("discord_webhook_noembed_message"));
 
+            this.getConfig().setDebugmode(configuration.getBoolean("debugmode"));
+
             this.getConfig().setInsults(configuration.getStringList("insults"));
         } catch (Exception e) {
             getLogger().severe("Enable error: failed to create configuration instance!");

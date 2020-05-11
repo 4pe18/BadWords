@@ -27,6 +27,7 @@ package fr.hyldaria.dev.badwords;
 import java.security.InvalidParameterException;
 import java.time.Instant;
 import java.util.*;
+import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 /**
@@ -75,35 +76,46 @@ public final class BadWordsDetector {
     public BadWordsJob process(BadWordsJob work) {
         detection: for (String i : this.getInsults()) {
             if (this.getInstance().getConfig().getPure_certitude_enabled() && i.length() >= this.getInstance().getConfig().getPure_certitude_length()
-                    && work.getMessage().replaceAll("[^a-zA-Z0-9]+"," ").contains(i)) {
+                    && work.getMessage().toLowerCase().replaceAll("[^a-zA-Z0-9]+"," ").contains(i.toLowerCase())) {
                 work.setResemblance(100);
                 work.setToxic(true);
                 work.setHighlight(i);
+                if (this.getInstance().getConfig().getDebugmode()) {
+                    this.getInstance().getLogger().log(Level.CONFIG, "[DEBUG] > " + work.getAuthor() + " : " + i + " (" + work.getResemblance() + "%)");
+                }
                 break;
             } else if (this.getInstance().getConfig().getResemblance_enabled()) {
-                for (String w : (work.getMessage()).replace("  ", "").split(" ")) {
-                    int resemblance = this.getResemblance(w.replaceAll("[^a-zA-Z0-9]+"," "), i);
+                for (String w : work.getMessage().replace("  ", "").split(" ")) {
+                    int resemblance = this.getResemblance(w.toLowerCase().replaceAll("[^a-zA-Z0-9]+"," "), i.toLowerCase());
                     if (resemblance >= this.getInstance().getConfig().getResemblance_min()) {
                         work.setResemblance(resemblance);
                         work.setToxic(true);
-                        work.setHighlight(w);
+                        if (this.getInstance().getConfig().getDebugmode()) {
+                            this.getInstance().getLogger().log(Level.CONFIG, "[DEBUG] > " + work.getAuthor() + " : " + i + " (" + work.getResemblance() + "%)");
+                        }
                         break detection;
                     }
                 }
             }
         }
+
         if (!work.isToxic() && this.getInstance().getConfig().getResemblance_enabled()) {
-            for (String i : this.getInsults()) {
+            detection: for (String i : this.getInsults()) {
                 for (Map.Entry<String, String> w : this.getCleanWords(work.getMessage()).entrySet()) {
-                    int resemblance = this.getResemblance(w.getKey().replaceAll("[^a-zA-Z0-9]+"," "), i);
+                    int resemblance = this.getResemblance(w.getKey().toLowerCase().replaceAll("[^a-zA-Z0-9]+"," "), i.toLowerCase());
                     if (resemblance >= this.getInstance().getConfig().getResemblance_min()) {
                         work.setResemblance(resemblance);
                         work.setToxic(true);
                         work.setHighlight(w.getValue());
+                        if (this.getInstance().getConfig().getDebugmode()) {
+                            this.getInstance().getLogger().log(Level.CONFIG, "[DEBUG] > " + work.getAuthor() + " : " + i + " (" + work.getResemblance() + "%)");
+                        }
+                        break detection;
                     }
                 }
             }
         }
+
         work.setPending(false);
         work.setResolution(Instant.now());
         return work;

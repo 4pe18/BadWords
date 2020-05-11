@@ -183,6 +183,9 @@ discord_webhook_embed_inline: true
 # %certitude% = pourentage de certitude de la détection
 discord_webhook_noembed_message: "**%player%** > %message% \n`%certitude% de certitude`"
 
+#Activer le mode debug
+debugmode: false
+
 #Liste des mots insultants
 #Faire attention à ne pas mettre de mots avec espace, seulement la partie insultante
 #Par exemple, pour "fils de pute", seul "pute" suffit - afin d'éviter des détections en trop et d'améliorer la performance

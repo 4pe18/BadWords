@@ -72,6 +72,8 @@ public class BadWordsConfig {
     private Boolean discord_webhook_embed_inline = true;
     private String discord_webhook_noembed_message = "**%player%** > %message% \n`%certitude% de certitude`";
 
+    private Boolean debugmode = false;
+
     private List<String> insults = new ArrayList<>();
 
 
@@ -208,6 +210,10 @@ public class BadWordsConfig {
         if (Objects.nonNull(discord_webhook_noembed_message)) this.discord_webhook_noembed_message = discord_webhook_noembed_message;
     }
 
+    public void setDebugmode(Boolean debugmode) {
+        if (Objects.nonNull(debugmode)) this.debugmode = debugmode;
+    }
+
     public void setInsults(List<String> insults) {
         if (Objects.nonNull(insults)) this.insults = insults;
     }
@@ -339,6 +345,10 @@ public class BadWordsConfig {
 
     public String getDiscord_webhook_noembed_message() {
         return this.discord_webhook_noembed_message;
+    }
+
+    public Boolean getDebugmode() {
+        return debugmode;
     }
 
     public List<String> getInsults() {
