@@ -186,6 +186,75 @@ discord_webhook_noembed_message: "**%player%** > %message% \n`%certitude% de cer
 #Activer le mode debug
 debugmode: false
 
+#Activer le stockage mySQL
+#Si activé, chaque detection notifié est enregistré en tant qu'une ligne dans une table mysql
+#
+# **Structure de la table:**
+#
+#|============================================================================================|#
+#| id || uuid | username | servername | time | message | hightlight | foundword | resemblance |#
+#|====||======|==========|============|======|=========|============|===========|=============|#
+#| 1  ||  2   |     3    |     4      |  5  |     6    |      7     |     8     |      9      |#
+#|============================================================================================|#
+#
+# 1: id unique, clé de la table
+#---------------------------------
+# 2: uuid de l'utilisateur ayant posté le message
+# 3: nom d'utilisateur de l'utilisateur ayant posté le message
+# 4: nom du serveur où le message a été posté
+# 5: date à laquelle le message a été posté
+# 6: le message posté
+# 7: la portion du message posté detectée (highlight)
+# 8: le mot que le système a semblé reconnaitre (foundword)
+# 9: le pourcentage de ressemblance entre l'highlight et le foundword (nombre entre 0 et 100)
+mysql_enabled: false
+
+#Adresse du serveur mysql
+mysql_host: "0.0.0.0"
+
+#Port du serveur msql
+mysql_port: 3306
+
+#Nom d'utilisateur pour le serveur mysql
+mysql_username: "admin"
+
+#Mot de passe pour le serveur mysql
+mysql_password: "admin123"
+
+#Base de donnée du serveur mysql
+mysql_database: "database"
+
+#Nom de la table dans le serveur mysql
+mysql_table: "badwords"
+
+
+#Nom de la colonne 'id' dans la table mysql
+mysql_table_id: "id"
+
+#Nom de la colonne 'uuid' dans la table msql
+mysql_table_uuid: "uuid"
+
+#Nom de la colonne 'username' dans la table mysql
+mysql_table_username: "username"
+
+#Nom de la colonne 'servername' dans la table mysql
+mysql_table_servername: "servername"
+
+#Nom de la colonne 'date' dans la table mysql
+mysql_table_date: "date"
+
+#Nom de la colonne 'message' dans la table mysql
+mysql_table_message: "message"
+
+#Nom de la colonne 'highlight' dans la table mysql
+mysql_table_highlight: "highlight"
+
+#Nom de la colonne 'foundword' dans la table mysql
+mysql_table_foundword: "foundword"
+
+#No de la colonne 'resemblance' dans la table mysql
+mysql_table_resemblance: "resemblance"
+
 #Liste des mots insultants
 #Faire attention à ne pas mettre de mots avec espace, seulement la partie insultante
 #Par exemple, pour "fils de pute", seul "pute" suffit - afin d'éviter des détections en trop et d'améliorer la performance

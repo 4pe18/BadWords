@@ -204,6 +204,14 @@ public class BadWordsPlugin extends Plugin {
             this.getConfig().setDiscord_webhook_embed_inline(configuration.getBoolean("discord_webhook_embed_inline"));
             this.getConfig().setDiscord_webhook_noembed_message(configuration.getString("discord_webhook_noembed_message"));
 
+            this.getConfig().setMysql_enabled(configuration.getBoolean("mysql_enabled"));
+            this.getConfig().setMysql_host(configuration.getString("mysql_host"));
+            this.getConfig().setMysql_port(configuration.getInt("mysql_port"));
+            this.getConfig().setMysql_database(configuration.getString("mysql_database"));
+            this.getConfig().setMysql_table(configuration.getString("mysql_table"));
+
+            //TODO
+
             this.getConfig().setDebugmode(configuration.getBoolean("debugmode"));
 
             this.getConfig().setInsults(configuration.getStringList("insults"));

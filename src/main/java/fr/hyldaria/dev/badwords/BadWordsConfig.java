@@ -74,6 +74,24 @@ public class BadWordsConfig {
 
     private Boolean debugmode = false;
 
+    private Boolean mysql_enabled = false;
+    private String mysql_host = "0.0.0.0";
+    private Integer mysql_port = 3306;
+    private String mysql_username = "admin";
+    private String mysql_password = "admin123";
+    private String mysql_database = "database";
+    private String mysql_table = "badwords";
+
+    private String mysql_table_id = "id";
+    private String mysql_table_uuid = "uuid";
+    private String mysql_table_username = "username";
+    private String mysql_table_servername = "servername";
+    private String mysql_table_date = "date";
+    private String mysql_table_message = "message";
+    private String mysql_table_highlight = "highlight";
+    private String mysql_table_foundword = "foundword";
+    private String mysql_table_resemblance = "resemblance";
+
     private List<String> insults = new ArrayList<>();
 
 
@@ -214,6 +232,70 @@ public class BadWordsConfig {
         if (Objects.nonNull(debugmode)) this.debugmode = debugmode;
     }
 
+    public void setMysql_enabled(Boolean mysql_enabled) {
+        if (Objects.nonNull(mysql_enabled)) this.mysql_enabled = mysql_enabled;
+    }
+
+    public void setMysql_host(String mysql_host) {
+        if (Objects.nonNull(mysql_host)) this.mysql_host = mysql_host;
+    }
+
+    public void setMysql_port(Integer mysql_port) {
+        if (Objects.nonNull(mysql_port)) this.mysql_port = mysql_port;
+    }
+
+    public void setMysql_username(String mysql_username) {
+        if (Objects.nonNull(mysql_username)) this.mysql_username = mysql_username;
+    }
+
+    public void setMysql_password(String mysql_password) {
+        if (Objects.nonNull(mysql_password)) this.mysql_password = mysql_password;
+    }
+
+    public void setMysql_database(String mysql_database) {
+        if (Objects.nonNull(mysql_database)) this.mysql_database = mysql_database;
+    }
+
+    public void setMysql_table(String mysql_table) {
+        if (Objects.nonNull(mysql_table)) this.mysql_table = mysql_table;
+    }
+
+    public void setMysql_table_id(String mysql_table_id) {
+        if (Objects.nonNull(mysql_table_id)) this.mysql_table_id = mysql_table_id;
+    }
+
+    public void setMysql_table_uuid(String mysql_table_uuid) {
+        if (Objects.nonNull(mysql_table_uuid)) this.mysql_table_uuid = mysql_table_uuid;
+    }
+
+    public void setMysql_table_username(String mysql_table_username) {
+        if (Objects.nonNull(mysql_table_username)) this.mysql_table_username = mysql_table_username;
+    }
+
+    public void setMysql_table_servername(String mysql_table_servername) {
+        if (Objects.nonNull(mysql_table_servername)) this.mysql_table_servername = mysql_table_servername;
+    }
+
+    public void setMysql_table_date(String mysql_table_date) {
+        if (Objects.nonNull(mysql_table_date)) this.mysql_table_date = mysql_table_date;
+    }
+
+    public void setMysql_table_message(String mysql_table_message) {
+        if (Objects.nonNull(mysql_table_message)) this.mysql_table_message = mysql_table_message;
+    }
+
+    public void setMysql_table_highlight(String mysql_table_highlight) {
+        if (Objects.nonNull(mysql_table_highlight)) this.mysql_table_highlight = mysql_table_highlight;
+    }
+
+    public void setMysql_table_foundword(String mysql_table_foundword) {
+        if (Objects.nonNull(mysql_table_foundword)) this.mysql_table_foundword = mysql_table_foundword;
+    }
+
+    public void setMysql_table_resemblance(String mysql_table_resemblance) {
+        if (Objects.nonNull(mysql_table_resemblance)) this.mysql_table_resemblance = mysql_table_resemblance;
+    }
+
     public void setInsults(List<String> insults) {
         if (Objects.nonNull(insults)) this.insults = insults;
     }
@@ -349,6 +431,70 @@ public class BadWordsConfig {
 
     public Boolean getDebugmode() {
         return debugmode;
+    }
+
+    public Boolean getMysql_enabled() {
+        return mysql_enabled;
+    }
+
+    public String getMysql_host() {
+        return mysql_host;
+    }
+
+    public Integer getMysql_port() {
+        return mysql_port;
+    }
+
+    public String getMysql_username() {
+        return mysql_username;
+    }
+
+    public String getMysql_password() {
+        return mysql_password;
+    }
+
+    public String getMysql_database() {
+        return mysql_database;
+    }
+
+    public String getMysql_table() {
+        return mysql_table;
+    }
+
+    public String getMysql_table_id() {
+        return mysql_table_id;
+    }
+
+    public String getMysql_table_uuid() {
+        return mysql_table_uuid;
+    }
+
+    public String getMysql_table_username() {
+        return mysql_table_username;
+    }
+
+    public String getMysql_table_servername() {
+        return mysql_table_servername;
+    }
+
+    public String getMysql_table_date() {
+        return mysql_table_date;
+    }
+
+    public String getMysql_table_message() {
+        return mysql_table_message;
+    }
+
+    public String getMysql_table_highlight() {
+        return mysql_table_highlight;
+    }
+
+    public String getMysql_table_foundword() {
+        return mysql_table_foundword;
+    }
+
+    public String getMysql_table_resemblance() {
+        return mysql_table_resemblance;
     }
 
     public List<String> getInsults() {
