@@ -22,8 +22,9 @@ notif_highlight_colorcode: "&6"
 #Message de notification
 # %player% = nom du joueur
 # %message% = message formatté
+# %detection% = l'insulte définie dans la configuration reconnue/détectée
 # %certitude% = pourentage de certitude de la détection
-notif_message: "&c[Filter] &a%player% &7> %message% &7(&e%certitude%&7)"
+notif_message: "&c[Filter] &a%player% &7> %message% &7(&e%detection% : %certitude%&7)"
 
 #Activer le coutournement de la détection
 bypass_enabled: false
@@ -270,3 +271,10 @@ insults:
   - "pute"
   - "fdp"
 #  - "badblock" #lol.
+
+#Liste des exceptions aux mots insultants
+#Comme pour "insults", faire attention à ne pas mettre de mots avec espace, seulement la partie insultante
+#On peut aussi spécifier une exception pour un cas précis, par exemple: "config" pour la détection de con sera: "con:config"
+exceptions:
+  - "con:config"
+  - "configuration"

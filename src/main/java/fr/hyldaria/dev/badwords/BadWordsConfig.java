@@ -93,10 +93,12 @@ public class BadWordsConfig {
     private String mysql_table_resemblance = "resemblance";
 
     private List<String> insults = new ArrayList<>();
+    private List<String> exceptions = new ArrayList<>();
 
 
     BadWordsConfig() {
         insults.addAll(Arrays.asList("connard", "nique", "con", "pd", "salope", "batard", "suce", "suceur", "pute", "fdp"));
+        exceptions.addAll(Arrays.asList("con:config", "configuration"));
     }
 
 
@@ -300,6 +302,10 @@ public class BadWordsConfig {
         if (Objects.nonNull(insults)) this.insults = insults;
     }
 
+    public void setExceptions(List<String> exceptions) {
+        if (Objects.nonNull(exceptions)) this.exceptions = exceptions;
+    }
+
 
     public String getNotif_perm() {
         return this.notif_perm;
@@ -499,5 +505,9 @@ public class BadWordsConfig {
 
     public List<String> getInsults() {
         return this.insults;
+    }
+
+    public List<String> getExceptions() {
+        return this.exceptions;
     }
 }

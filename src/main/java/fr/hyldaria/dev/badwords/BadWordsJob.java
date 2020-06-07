@@ -42,6 +42,7 @@ public class BadWordsJob {
     private Boolean toxic;
     private Integer resemblance;
     private String highlight;
+    private String detection;
 
 
     public BadWordsJob(String author, String message) {
@@ -77,6 +78,9 @@ public class BadWordsJob {
         if (Objects.nonNull(author)) this.highlight = highlight;
     }
 
+    public void setDetection(String detection) {
+        if (Objects.nonNull(detection)) this.detection = detection;
+    }
 
     public String getAuthor() {
         return this.author;
@@ -108,5 +112,9 @@ public class BadWordsJob {
 
     public String getHighlight() {
         return this.highlight;
+    }
+
+    public String getDetection() {
+        return this.detection;
     }
 }

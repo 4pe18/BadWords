@@ -210,11 +210,10 @@ public class BadWordsPlugin extends Plugin {
             this.getConfig().setMysql_database(configuration.getString("mysql_database"));
             this.getConfig().setMysql_table(configuration.getString("mysql_table"));
 
-            //TODO
-
             this.getConfig().setDebugmode(configuration.getBoolean("debugmode"));
 
             this.getConfig().setInsults(configuration.getStringList("insults"));
+            this.getConfig().setExceptions(configuration.getStringList("exceptions"));
         } catch (Exception e) {
             getLogger().severe("Enable error: failed to create configuration instance!");
             e.printStackTrace();
