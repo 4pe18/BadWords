@@ -24,13 +24,18 @@
 
 package fr.hyldaria.dev.badwords;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.time.Instant;
+import java.util.Base64;
 import java.util.Objects;
 
 /**
  * @author 4PE18
  */
-public class BadWordsJob {
+public class BadWordsJob  implements Serializable {
 
     private final String author;
     private final String message;
@@ -116,5 +121,39 @@ public class BadWordsJob {
 
     public String getDetection() {
         return this.detection;
+    }
+
+    @Override
+    public String toString() {
+        return "BadWordsJob{" +
+                "author='" + author + '\'' +
+                ", message='" + message + '\'' +
+                ", creation=" + creation +
+                ", pending=" + pending +
+                ", resolution=" + resolution +
+                ", toxic=" + toxic +
+                ", resemblance=" + resemblance +
+                ", highlight='" + highlight + '\'' +
+                ", detection='" + detection + '\'' +
+                ", encode='" + base64() + '\'' +
+                '}';
+    }
+
+    public String base64() {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try {
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+            objectOutputStream.writeObject(this);
+            objectOutputStream.close();
+            return "base64:" + Base64.getEncoder().encodeToString(byteArrayOutputStream.toByteArray());
+        } catch (IOException e) {
+            return "exception occured...; " + e.getMessage();
+        } finally {
+            try {
+                byteArrayOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

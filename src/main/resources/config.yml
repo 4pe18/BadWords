@@ -100,6 +100,9 @@ discord_webhook_embed_player: "Joueur"
 #Le nom du champ "message" dans l'embed
 discord_webhook_embed_message: "Message"
 
+#Le nom du champ "detection" dans l'embed
+discord_webhook_embed_detection: "Détection"
+
 #Le nom du champ "certitude" dans l'embed
 discord_webhook_embed_certitude: "Certitude"
 
@@ -181,8 +184,9 @@ discord_webhook_embed_inline: true
 #Dans le cas où l'embed est désactivé, le contenu du message du
 # %player% = nom du joueur
 # %message% = message formatté
+# %detection% = l'insulte définie dans la configuration reconnue/détectée
 # %certitude% = pourentage de certitude de la détection
-discord_webhook_noembed_message: "**%player%** > %message% \n`%certitude% de certitude`"
+discord_webhook_noembed_message: "**%player%** > %message% \n`\"%detection%\" : %certitude%%`"
 
 #Activer le mode debug
 debugmode: false

@@ -64,6 +64,7 @@ public class BadWordsConfig {
     private String discord_webhook_embed_description = "Message suspicieux détecté!";
     private String discord_webhook_embed_player= "Joueur";
     private String discord_webhook_embed_message = "Message";
+    private String discord_webhook_embed_detection = "Détection";
     private String discord_webhook_embed_certitude = "Certitude";
     private String discord_webhook_embed_date = "Date";
     private String discord_webhook_embed_locale = "FRANCE";
@@ -200,6 +201,10 @@ public class BadWordsConfig {
 
     public void setDiscord_webhook_embed_message(String discord_webhook_embed_message) {
         if (Objects.nonNull(discord_webhook_embed_message)) this.discord_webhook_embed_message = discord_webhook_embed_message;
+    }
+
+    public void setDiscord_webhook_embed_detection(String discord_webhook_embed_detection) {
+        if (Objects.nonNull(discord_webhook_embed_detection)) this.discord_webhook_embed_detection = discord_webhook_embed_detection;
     }
 
     public void setDiscord_webhook_embed_certitude(String discord_webhook_embed_certitude) {
@@ -409,6 +414,10 @@ public class BadWordsConfig {
 
     public String getDiscord_webhook_embed_certitude() {
         return this.discord_webhook_embed_certitude;
+    }
+
+    public String getDiscord_webhook_embed_detection() {
+        return this.discord_webhook_embed_detection;
     }
 
     public String getDiscord_webhook_embed_date() {

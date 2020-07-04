@@ -196,6 +196,7 @@ public class BadWordsPlugin extends Plugin {
             this.getConfig().setDiscord_webhook_embed_description(configuration.getString("discord_webhook_embed_description"));
             this.getConfig().setDiscord_webhook_embed_player(configuration.getString("discord_webhook_embed_player"));
             this.getConfig().setDiscord_webhook_embed_message(configuration.getString("discord_webhook_embed_message"));
+            this.getConfig().setDiscord_webhook_embed_detection(configuration.getString("discord_webhook_embed_detection"));
             this.getConfig().setDiscord_webhook_embed_certitude(configuration.getString("discord_webhook_embed_certitude"));
             this.getConfig().setDiscord_webhook_embed_date(configuration.getString("discord_webhook_embed_date"));
             this.getConfig().setDiscord_webhook_embed_locale(configuration.getString("discord_webhook_embed_locale"));

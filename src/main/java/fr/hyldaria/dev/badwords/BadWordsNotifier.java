@@ -114,6 +114,7 @@ public class BadWordsNotifier {
                                         replace("%message%", this.getInstance().getConfig().getNotif_message_colorcode() +
                                                 work.getMessage().replace(work.getHighlight(), this.getInstance().getConfig().getNotif_highlight_colorcode() +
                                                         work.getHighlight() + this.getInstance().getConfig().getNotif_message_colorcode())).
+                                        replace("%detection%", work.getDetection()).
                                         replace("%certitude%", work.getResemblance().toString() + "%"))
                         ));
                         staff.getAndIncrement();
@@ -135,6 +136,10 @@ public class BadWordsNotifier {
 
                         embed.addField("**" + this.getInstance().getConfig().getDiscord_webhook_embed_message() + "**",
                                 work.getMessage().replace(work.getHighlight(), "**" + work.getHighlight() + "**"),
+                                this.getInstance().getConfig().getDiscord_webhook_embed_inline());
+
+                        embed.addField("**" + this.getInstance().getConfig().getDiscord_webhook_embed_detection() + "**",
+                                work.getDetection(),
                                 this.getInstance().getConfig().getDiscord_webhook_embed_inline());
 
                         embed.addField("**" + this.getInstance().getConfig().getDiscord_webhook_embed_certitude() + "**",

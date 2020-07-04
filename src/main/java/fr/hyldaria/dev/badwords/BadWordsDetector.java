@@ -80,6 +80,7 @@ public final class BadWordsDetector {
                 work.setResemblance(100);
                 work.setToxic(true);
                 work.setHighlight(i);
+                work.setDetection(i);
                 if (this.getInstance().getConfig().getDebugmode()) {
                     this.getInstance().getLogger().log(Level.CONFIG, "[DEBUG] > " + work.getAuthor() + " : " + i + " (" + work.getResemblance() + "%)");
                 }
@@ -87,12 +88,12 @@ public final class BadWordsDetector {
             } else if (this.getInstance().getConfig().getResemblance_enabled()) {
                 for (String w : work.getMessage().replace("  ", "").split(" ")) {
                     int resemblance = this.getResemblance(w.toLowerCase().replaceAll("[^a-zA-Z0-9]+"," "), i.toLowerCase());
-                    if (resemblance >= this.getInstance().getConfig().getResemblance_min()) {
+                    if (resemblance >= this.getInstance().getConfig().getResemblance_min() &&
+                            !this.getInstance().getConfig().getExceptions().contains(w.toLowerCase().replaceAll("[^a-zA-Z0-9]+"," "))) {
                         work.setResemblance(resemblance);
+                        work.setDetection(i);
                         work.setToxic(true);
-                        if (this.getInstance().getConfig().getDebugmode()) {
-                            this.getInstance().getLogger().log(Level.CONFIG, "[DEBUG] > " + work.getAuthor() + " : " + i + " (" + work.getResemblance() + "%)");
-                        }
+                        work.setHighlight(w);
                         break detection;
                     }
                 }
@@ -103,10 +104,12 @@ public final class BadWordsDetector {
             detection: for (String i : this.getInsults()) {
                 for (Map.Entry<String, String> w : this.getCleanWords(work.getMessage()).entrySet()) {
                     int resemblance = this.getResemblance(w.getKey().toLowerCase().replaceAll("[^a-zA-Z0-9]+"," "), i.toLowerCase());
-                    if (resemblance >= this.getInstance().getConfig().getResemblance_min()) {
+                    if (resemblance >= this.getInstance().getConfig().getResemblance_min() &&
+                            !this.getInstance().getConfig().getExceptions().contains(w.getKey().toLowerCase().replaceAll("[^a-zA-Z0-9]+"," "))) {
                         work.setResemblance(resemblance);
                         work.setToxic(true);
                         work.setHighlight(w.getValue());
+                        work.setDetection(i);
                         if (this.getInstance().getConfig().getDebugmode()) {
                             this.getInstance().getLogger().log(Level.CONFIG, "[DEBUG] > " + work.getAuthor() + " : " + i + " (" + work.getResemblance() + "%)");
                         }
@@ -118,6 +121,11 @@ public final class BadWordsDetector {
 
         work.setPending(false);
         work.setResolution(Instant.now());
+
+        if (work.isToxic() && this.getInstance().getConfig().getDebugmode()) {
+            this.getInstance().getLogger().log(Level.CONFIG, "[DEBUG] Positive check on > " + work.toString());
+        }
+
         return work;
     }
 
