@@ -37,10 +37,20 @@ public class BadWordsConfig {
     private String notif_perm = "badwords.notif";
     private String notif_message_colorcode =  "&e";
     private String notif_highlight_colorcode = "&6";
-    private String notif_message = "&c[Filter] &a%player% &7> ";
+    private String notif_message = "&8[&9BadWords&8] &a%player% &7> %message% &7(&e%detection% : %certitude%&7)";
 
     private Boolean bypass_enabled = false;
     private String bypass_perm = "badwords.bypass";
+
+    private Boolean command_enabled = true;
+    private String command_label = "badwords";
+    private String command_no_perm = "&8[&9BadWords&8] &cDésolé, vous n'avez pas la permission pour utiliser cette commande";
+    private String command_console = "&8[&9BadWords&8] &cErreur: cette commande n'est pas utilisable par la console";
+    private String command_notif_enabled = "&8[&9BadWords&8] &eMessages de notifications &aactivés &e!";
+    private String command_notif_disabled = "&8[&9BadWords&8] &eMessages de notifications &cdésactivés &e!";
+    private Boolean command_default = true;
+    private Boolean command_reset = true;
+    private Boolean command_notify_on_join = false;
 
     private Boolean generate_spaced_enabled = true;
 
@@ -71,7 +81,7 @@ public class BadWordsConfig {
     private String discord_webhook_embed_zoneid = "Europe/Paris";
     private String discord_webhook_embed_timeformat = "**hh**:**mm**:**ss** '`['dd MMM yyyy']`'";
     private Boolean discord_webhook_embed_inline = true;
-    private String discord_webhook_noembed_message = "**%player%** > %message% \n`%certitude% de certitude`";
+    private String discord_webhook_noembed_message = "**%player%** > %message% \n`\"%detection%\" : %certitude%%`";
 
     private Boolean debugmode = false;
 
@@ -127,8 +137,44 @@ public class BadWordsConfig {
         if (Objects.nonNull(bypass_perm)) this.bypass_perm = bypass_perm;
     }
 
+    public void setCommand_enabled(Boolean command_enabled) {
+        if (Objects.nonNull(command_enabled)) this.command_enabled = command_enabled;
+    }
+
+    public void setCommand_label(String command_label) {
+        if (Objects.nonNull(command_label)) this.command_label = command_label;
+    }
+
+    public void setCommand_no_perm(String command_no_perm) {
+        if (Objects.nonNull(command_no_perm)) this.command_no_perm = command_no_perm;
+    }
+
+    public void setCommand_console(String command_console) {
+        if (Objects.nonNull(command_console)) this.command_console = command_console;
+    }
+
+    public void setCommand_notif_enabled(String command_notif_enabled) {
+        if (Objects.nonNull(command_notif_enabled)) this.command_notif_enabled = command_notif_enabled;
+    }
+
+    public void setCommand_notif_disabled(String command_notif_disabled) {
+        if (Objects.nonNull(command_notif_disabled)) this.command_notif_disabled = command_notif_disabled;
+    }
+
     public void setGenerate_spaced_enabled(Boolean generate_spaced_enabled) {
         if (Objects.nonNull(generate_spaced_enabled)) this.generate_spaced_enabled = generate_spaced_enabled;
+    }
+
+    public void setCommand_default(Boolean command_default) {
+        if (Objects.nonNull(command_default)) this.command_default = command_default;
+    }
+
+    public void setCommand_reset(Boolean command_reset) {
+        if (Objects.nonNull(command_reset)) this.command_reset = command_reset;
+    }
+
+    public void setCommand_notify_on_join(Boolean command_notify_on_join) {
+        if (Objects.nonNull(command_notify_on_join)) this.command_notify_on_join = command_notify_on_join;
     }
 
     public void setPure_certitude_enabled(Boolean pure_certitude_enabled) {
@@ -334,6 +380,42 @@ public class BadWordsConfig {
 
     public String getBypass_perm() {
         return this.bypass_perm;
+    }
+
+    public Boolean getCommand_enabled() {
+        return command_enabled;
+    }
+
+    public String getCommand_label() {
+        return command_label;
+    }
+
+    public String getCommand_no_perm() {
+        return command_no_perm;
+    }
+
+    public String getCommand_console() {
+        return command_console;
+    }
+
+    public String getCommand_notif_enabled() {
+        return command_notif_enabled;
+    }
+
+    public String getCommand_notif_disabled() {
+        return command_notif_disabled;
+    }
+
+    public Boolean getCommand_default() {
+        return command_default;
+    }
+
+    public Boolean getCommand_reset() {
+        return command_reset;
+    }
+
+    public Boolean getCommand_notify_on_join() {
+        return command_notify_on_join;
     }
 
     public Boolean getGenerate_spaced_enabled() {

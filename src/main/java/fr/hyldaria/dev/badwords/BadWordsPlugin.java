@@ -103,6 +103,7 @@ public class BadWordsPlugin extends Plugin {
     };
 
     private BadWordsConfig config;
+    private BadWordsManager manager;
     private BadWordsNotifier notifier;
     private BadWordsDetector detector;
     private BadWordsProcessor processor;
@@ -173,6 +174,15 @@ public class BadWordsPlugin extends Plugin {
 
             this.getConfig().setBypass_enabled(configuration.getBoolean("bypass_enabled"));
             this.getConfig().setBypass_perm(configuration.getString("bypass_perm"));
+            
+            this.getConfig().setCommand_enabled(configuration.getBoolean("command_enabled"));
+            this.getConfig().setCommand_label(configuration.getString("command_label"));
+            this.getConfig().setCommand_no_perm(configuration.getString("command_no_perm"));
+            this.getConfig().setCommand_notif_enabled(configuration.getString("command_notif_enabled"));
+            this.getConfig().setCommand_notif_disabled(configuration.getString("command_notif_disabled"));
+            this.getConfig().setCommand_default(configuration.getBoolean("command_default"));
+            this.getConfig().setCommand_reset(configuration.getBoolean("command_reset"));
+            this.getConfig().setCommand_notify_on_join(configuration.getBoolean("command_notify_on_join"));
 
             this.getConfig().setGenerate_spaced_enabled(configuration.getBoolean("generate_spaced_enabled"));
 
@@ -222,6 +232,17 @@ public class BadWordsPlugin extends Plugin {
             return;
         }
         getLogger().info("Configuration instance created!");
+
+        getLogger().info("Creating command instance...");
+        try {
+            //TODO this.notifier = new BadWordsNotifier(this);
+        } catch (Exception e) {
+            getLogger().severe("Enable error: failed to create command instance!");
+            e.printStackTrace();
+            this.onDisable();
+            return;
+        }
+        getLogger().info("Notifier instance created!");
 
         getLogger().info("Creating notifier instance...");
         try {
@@ -309,6 +330,10 @@ public class BadWordsPlugin extends Plugin {
 
     public BadWordsConfig getConfig() {
         return this.config;
+    }
+
+    public BadWordsManager getManager() {
+        return manager;
     }
 
     public BadWordsNotifier getNotifier() {

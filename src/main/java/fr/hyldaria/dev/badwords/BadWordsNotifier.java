@@ -106,7 +106,8 @@ public class BadWordsNotifier {
     public void notify(BadWordsJob work) {
         if (Objects.nonNull(work) && !work.isPending() && work.isToxic()) {
             AtomicInteger staff = new AtomicInteger();
-            ProxyServer.getInstance().getPlayers().stream().filter(p -> p.hasPermission(this.getInstance().getConfig().getNotif_perm()))
+            ProxyServer.getInstance().getPlayers().stream().filter(p -> p.hasPermission(this.getInstance().getConfig().getNotif_perm()) &&
+                    this.getInstance().getManager().getNotifEnabled(p))
                     .forEach(p -> {
                         p.sendMessage(TextComponent.fromLegacyText(
                                 ChatColor.translateAlternateColorCodes('&', this.getInstance().getConfig().getNotif_message().

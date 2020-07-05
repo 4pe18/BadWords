@@ -24,13 +24,44 @@ notif_highlight_colorcode: "&6"
 # %message% = message formatté
 # %detection% = l'insulte définie dans la configuration reconnue/détectée
 # %certitude% = pourentage de certitude de la détection
-notif_message: "&c[Filter] &a%player% &7> %message% &7(&e%detection% : %certitude%&7)"
+notif_message: "&8[&9BadWords&8] &a%player% &7> %message% &7(&e%detection% : %certitude%&7)"
 
 #Activer le coutournement de la détection
 bypass_enabled: false
 
 #Permission pour contourner la détection
 bypass_perm: "badwords.bypass"
+
+#Activer ou non la commande qui permet d'activer/désactiver la réception des messages de notification
+command_enabled: true
+
+#Nom de la commande pour activer/désactiver la réception des messages de notification
+command_label: "badwords"
+
+#Message reçu lorsqu'un joueur n'a pas la permission pour utiliser la commande
+command_no_perm: "&8[&9BadWords&8] &cDésolé, vous n'avez pas la permission pour utiliser cette commande"
+
+#Message affiché lorsque la console essaye d'utiliser la commande
+command_console: "&8[&9BadWords&8] &cErreur: cette commande n'est pas utilisable par la console"
+
+#Message reçu lorsque la réception des messages de notification
+command_notif_enabled: "&8[&9BadWords&8] &eMessages de notifications &aactivés &e!"
+
+command_notif_disabled: "&8[&9BadWords&8] &eMessages de notifications &cdésactivés &e!"
+
+#Si les notifications sont ou non activées par défaut
+command_default: true
+
+#Si le désactivation/activation de la réception des messages de notifications
+#est réinitialisée lorsque le joueur quitte
+#
+#Note: un redémarrage/reload du plugin forcera la réinitialisation car le réglage en question
+#n'est pas sauvegardé (il n'existe que dans l'instance du plugin)
+command_reset: true
+
+#Si les joueurs sont notifiés de leur réglage lors de la connexion
+command_notify_on_join: false
+
 
 #Prendre en compte les versions avec "espace" des insultes lors de la génération
 #Par exemple, pour "idiot", le système prend en comptes les verions:
