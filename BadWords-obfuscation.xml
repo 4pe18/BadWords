@@ -1,0 +1,54 @@
+<project default="yguard" name="yguard" basedir=".">
+    <target name="yguard">
+        <taskdef name="yguard" classname="com.yworks.yguard.YGuardTask" classpath="C:\Users\thegr\Desktop\workspace\yguard-2.7.1\yguard-2.7.1\lib\yguard.jar"/>
+        <yguard>
+            <inoutpair in="C:\Users\thegr\Desktop\workspace\BadWords\out\artifacts\BadWords\BadWords.jar" out="C:\Users\thegr\Desktop\workspace\BadWords\out\artifacts\BadWords\BadWords-O.jar"/>
+            <externalclasses>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\charsets.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\deploy.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\access-bridge-64.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\cldrdata.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\dnsns.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\jaccess.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\jfxrt.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\localedata.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\nashorn.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\sunec.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\sunjce_provider.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\sunmscapi.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\sunpkcs11.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\ext\zipfs.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\javaws.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\jce.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\jfr.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\jfxswt.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\jsse.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\management-agent.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\plugin.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\resources.jar"/>
+                <pathelement location="C:\Program Files\Java\jdk1.8.0_241\jre\lib\rt.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\net\md-5\bungeecord-api\1.15-SNAPSHOT\bungeecord-api-1.15-20200502.081932-68.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\net\md-5\bungeecord-chat\1.15-SNAPSHOT\bungeecord-chat-1.15-20200502.081812-68.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\net\md-5\bungeecord-config\1.15-SNAPSHOT\bungeecord-config-1.15-20200502.081835-68.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\net\md-5\bungeecord-event\1.15-SNAPSHOT\bungeecord-event-1.15-20200502.081903-68.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\net\md-5\bungeecord-protocol\1.15-SNAPSHOT\bungeecord-protocol-1.15-20200502.081917-68.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\net\md-5\brigadier\1.0.16-SNAPSHOT\brigadier-1.0.16-20181219.233212-1.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\io\netty\netty-codec\4.1.49.Final\netty-codec-4.1.49.Final.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\net\sf\trove4j\core\3.1.0\core-3.1.0.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.49.Final\netty-transport-native-unix-common-4.1.49.Final.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\io\netty\netty-common\4.1.49.Final\netty-common-4.1.49.Final.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\io\netty\netty-buffer\4.1.49.Final\netty-buffer-4.1.49.Final.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\io\netty\netty-transport\4.1.49.Final\netty-transport-4.1.49.Final.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\io\netty\netty-resolver\4.1.49.Final\netty-resolver-4.1.49.Final.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\org\yaml\snakeyaml\1.25\snakeyaml-1.25.jar"/>
+                <pathelement location="C:\Users\thegr\.m2\repository\com\google\guava\guava\21.0\guava-21.0.jar"/>
+            </externalclasses>
+            <rename mainclass="fr.hyldaria.dev.badwords.BadWordsPlugin" logfile="C:\Users\thegr\Desktop\workspace\BadWords\out\artifacts\BadWords\BadWords-O.jar-yguard.xml" conservemanifest="false" replaceClassNameStrings="true">
+                <property name="error-checking" value="pedantic"/>
+                <property name="naming-scheme" value="small"/>
+                <property name="language-conformity" value="compatible"/>
+            </rename>
+        </yguard>
+    </target>
+</project>
